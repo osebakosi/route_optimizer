@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form for Addresses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mt-4">Form for Addresses</h2>
+      <form id="address-form" action="/optimize-route" method="POST">
+        <div class="row">
+          <div class="col-md-9">
+            <div id="address-inputs">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="button" class="btn btn-secondary" onclick="moveUp(this)">↑</button>
+                    <button type="button" class="btn btn-secondary" onclick="moveDown(this)">↓</button>
+                  </div>
+                  <input type="text" class="form-control" name="addresses" placeholder="Address" required />
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="button" class="btn btn-secondary" onclick="moveUp(this)">↑</button>
+                    <button type="button" class="btn btn-secondary" onclick="moveDown(this)">↓</button>
+                  </div>
+                  <input type="text" class="form-control" name="addresses" placeholder="Address" required />
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <button type="button" class="btn btn-success" onclick="addAddressField()">Add Address</button>
+              <select name="transportation_mode" class="form-control mt-2">
+                <option value="car">Car</option>
+                <option value="foot">Foot</option>
+                <option value="bike">Bike</option>
+              </select>
+              <select name="optimization_method" class="form-control mt-2">
+                <option value="brute_force">Brute Force</option>
+                <option value="nearest_neighbor">Nearest Neighbor</option>
+                <option value="held_karp">Held-Karp</option>
+                <option value="branch_and_bound">Branch and Bound</option>
+                <option value="simulated_annealing">Simulated Annealing</option>
+                <option value="genetic_algorithm">Genetic Algorithm</option>
+                <option value="ant_colony">Ant Colony</option>
+              </select>
+              <button type="submit" class="btn btn-primary mt-2">Plot Route</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function addAddressField() {
+        const addressInputs = document.getElementById('address-inputs')
+        const newInput = document.createElement('div')
+        newInput.classList.add('form-group')
+        newInput.innerHTML = `
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary" onclick="moveUp(this)">↑</button>
+                                    <button type="button" class="btn btn-secondary" onclick="moveDown(this)">↓</button>
+                                </div>
+                                <input type="text" class="form-control" name="addresses" placeholder="Address" required>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
+                                </div>
+                            </div>
+                        `
+        addressInputs.appendChild(newInput)
+        updateButtons()
+      }
+      
+      function removeAddressField(button) {
+        const addressInputs = button.closest('.form-group')
+        if (addressInputs.parentNode.children.length > 2) {
+          addressInputs.parentNode.removeChild(addressInputs)
+          updateButtons()
+        }
+      }
+      
+      function moveUp(button) {
+        const addressInputs = button.closest('.form-group')
+        const previous = addressInputs.previousElementSibling
+        if (previous) {
+          addressInputs.parentNode.insertBefore(addressInputs, previous)
+          updateButtons()
+        }
+      }
+      
+      function moveDown(button) {
+        const addressInputs = button.closest('.form-group')
+        const next = addressInputs.nextElementSibling
+        if (next) {
+          addressInputs.parentNode.insertBefore(next, addressInputs)
+          updateButtons()
+        }
+      }
+      
+      function updateButtons() {
+        const removeButtons = document.querySelectorAll('.form-group button')
+        removeButtons.forEach((button) => {
+          button.removeAttribute('hidden')
+        })
+        const firstInput = document.getElementById('address-inputs').firstElementChild
+        const lastInput = document.getElementById('address-inputs').lastElementChild
+        firstInput.querySelector('.btn-secondary:nth-of-type(1)').setAttribute('hidden', 'hidden')
+        lastInput.querySelector('.btn-secondary:nth-of-type(2)').setAttribute('hidden', 'hidden')
+      }
+      
+      document.addEventListener('DOMContentLoaded', function () {
+        updateButtons()
+      })
+    </script>
+  </body>
+</html>

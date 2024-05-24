@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "bachelor"
+version = "0.1.0"
+description = ""
+authors = ["Nikita Tyugaev <nikitatyugaev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.111.0"}
+folium = "^0.16.0"
+numpy = "^1.26.4"
+numba = "^0.59.1"
+uvicorn = "^0.29.0"
+polyline = "^2.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
