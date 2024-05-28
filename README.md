@@ -27,5 +27,9 @@ cd route-optimizer
 ### Install Dependencies
 ```bash
 poetry install
+```
+
+### Start the Application
+```bash
 poetry run python main.py
 ```
