@@ -3,49 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form for Addresses</title>
+    <title>Route Optimizer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-     <style>
-      body, html {
-        background-color: #ececec;
-
-        /* display: flex;
-        justify-content: center;
-        justify-items: center; */
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        vertical-align: middle;
-      }
-      .container{
-        box-shadow: 0 0 10px rgba(102, 102, 102, 0.7);
-        position: absolute;
-        padding: 10px;
-        width: 1000px;
-        background-color: white;
-      }
-      .header-name{
-        display: flex;
-        justify-content: center;
-      }
-      .form-control{
-        height: 43.2px !important;
-      }
-     </style>
   </head>
   <body>
-     
     <div class="container">
-     <div class="header-name" style="margin-bottom: 20px;">
-        <h4 style="font-family: Roboto, sans-serif;">Form for Addresses</h2>
-      </div>
+      <h2 class="mt-4">Route Optimizer</h2>
       <form id="address-form" action="/optimize-route" method="POST">
         <div class="row">
           <div class="col-md-9">
             <div id="address-inputs">
-              <div class="form-group" style="margin-top: 10px;">
+              <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <button type="button" class="btn btn-secondary" onclick="moveUp(this)">↑</button>
@@ -53,11 +21,7 @@
                   </div>
                   <input type="text" class="form-control" name="addresses" placeholder="Address" required />
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">
-                      <span class="material-symbols-outlined">
-                        delete
-                      </span>
-                    </button>
+                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
                   </div>
                 </div>
               </div>
@@ -69,34 +33,30 @@
                   </div>
                   <input type="text" class="form-control" name="addresses" placeholder="Address" required />
                   <div class="input-group-append">
-                     <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">
-                      <span class="material-symbols-outlined">
-                        delete
-                      </span>
-                    </button>
+                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
                   </div>
                 </div>
-              </div>  
+              </div>
             </div>
-            <button type="button" class="btn btn-success" onclick="addAddressField()" style="width: 100%">+ Add Address</button>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <select name="transportation_mode" class="form-control mt-2">
+              <select name="transportation_mode" class="form-control">
                 <option value="car">Car</option>
                 <option value="foot">Foot</option>
                 <option value="bike">Bike</option>
               </select>
               <select name="optimization_method" class="form-control mt-2">
+                <option value="ant_colony">Ant Colony</option>
+                <option value="held_karp">Held-Karp</option>
                 <option value="brute_force">Brute Force</option>
                 <option value="nearest_neighbor">Nearest Neighbor</option>
-                <option value="held_karp">Held-Karp</option>
                 <option value="branch_and_bound">Branch and Bound</option>
                 <option value="simulated_annealing">Simulated Annealing</option>
                 <option value="genetic_algorithm">Genetic Algorithm</option>
-                <option value="ant_colony">Ant Colony</option>
               </select>
-              <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">Plot Route</button>
+              <button type="button" class="btn btn-success mt-2" onclick="addAddressField()">Add Address</button>
+              <button type="submit" class="btn btn-primary mt-2">Plot Route</button>
             </div>
           </div>
         </div>
@@ -116,11 +76,7 @@
                                 </div>
                                 <input type="text" class="form-control" name="addresses" placeholder="Address" required>
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">
-                                      <span class="material-symbols-outlined">
-                                        delete
-                                      </span>
-                                    </button>
+                                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
                                 </div>
                             </div>
                         `
