@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form for Addresses</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
-      <h2 class="mt-4">Form for Addresses</h2>
+      <div class="header-name" style="margin-bottom: 20px;">
+        <h4 style="font-family: Roboto, sans-serif;">Form for Addresses</h4>
+      </div>
       <form id="address-form" action="/optimize-route" method="POST">
         <div class="row">
           <div class="col-md-9">
             <div id="address-inputs">
-              <div class="form-group">
+              <div class="form-group" style="margin-top: 10px;">
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <button type="button" class="btn btn-secondary" onclick="moveUp(this)">↑</button>
@@ -21,7 +25,9 @@
                   </div>
                   <input type="text" class="form-control" name="addresses" placeholder="Address" required />
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
+                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -33,15 +39,17 @@
                   </div>
                   <input type="text" class="form-control" name="addresses" placeholder="Address" required />
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
+                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
+            <button type="button" class="btn btn-success" onclick="addAddressField()" style="width: 100%">+ Add Address</button>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <button type="button" class="btn btn-success" onclick="addAddressField()">Add Address</button>
               <select name="transportation_mode" class="form-control mt-2">
                 <option value="car">Car</option>
                 <option value="foot">Foot</option>
@@ -56,13 +64,12 @@
                 <option value="genetic_algorithm">Genetic Algorithm</option>
                 <option value="ant_colony">Ant Colony</option>
               </select>
-              <button type="submit" class="btn btn-primary mt-2">Plot Route</button>
+              <button type="submit" class="btn btn-primary mt-2" style="width: 100%;">Plot Route</button>
             </div>
           </div>
         </div>
       </form>
     </div>
-
     <script>
       function addAddressField() {
         const addressInputs = document.getElementById('address-inputs')
@@ -76,7 +83,11 @@
                                 </div>
                                 <input type="text" class="form-control" name="addresses" placeholder="Address" required>
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">-</button>
+                                    <button type="button" class="btn btn-danger" onclick="removeAddressField(this)">
+                                      <span class="material-symbols-outlined">
+                                        delete
+                                      </span>
+                                    </button>
                                 </div>
                             </div>
                         `
