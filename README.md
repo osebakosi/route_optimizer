@@ -22,5 +22,10 @@ To install and run this project, you need to have [Poetry](https://python-poetry
 ```bash
 git clone https://github.com/yourusername/route-optimizer.git
 cd route-optimizer
+```
+
+### Install Dependencies
+```bash
 poetry install
 poetry run python main.py
+```
