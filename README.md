@@ -13,9 +13,9 @@ Route Optimizer is a tool designed to build optimal routes based on given points
 
 To install and run this project, you need to have [Poetry](https://python-poetry.org/) installed on your system. Poetry is a tool for dependency management and packaging in Python.
 
-### Steps to Install Poetry
+### Install Poetry
 
-1. Follow the instructions on the [Poetry installation page](https://python-poetry.org/docs/#installation) to install Poetry on your system.
+Follow the instructions on the [Poetry installation page](https://python-poetry.org/docs/#installation) to install Poetry on your system.
 
 ### Clone the Repository
 
@@ -25,11 +25,17 @@ cd route-optimizer
 ```
 
 ### Install Dependencies
+
+Run the following command to install all the dependencies specified in the pyproject.toml file:
 ```bash
 poetry install
 ```
 
+## Usage
+
+Once all dependencies are installed, you can run the Route Optimizer application using Poetry.
 ### Start the Application
 ```bash
 poetry run python main.py
 ```
+The application will start running on http://127.0.0.1:8000.
