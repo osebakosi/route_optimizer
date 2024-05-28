@@ -7,7 +7,7 @@ Route Optimizer is a tool designed to build optimal routes based on given points
 - Efficient route calculation
 - Support for multiple destinations
 - Customizable parameters for route optimization
-- User-friendly interface
+- Standardizes, handles variations and inconsistencies, validates and corrects invalid or incomplete addresses
 
 ## Installation
 
