@@ -20,7 +20,7 @@ Follow the instructions on the [Poetry installation page](https://python-poetry.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/route-optimizer.git
+git clone https://github.com/osebakosi/route-optimizer.git
 cd route-optimizer
 ```
 
