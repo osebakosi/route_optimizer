@@ -1,5 +1,6 @@
 import folium
 import polyline
+import re
 
 
 def number_DivIcon(number):
@@ -49,6 +50,13 @@ def get_coords(points):
 def get_center(lons, lats):
     return [(max(lons) + min(lons)) / 2, (max(lats) + min(lats)) / 2]
 
+def get_render(fm):
+    render = fm.get_root().render()
+    return re.sub(
+        r".leaflet-container { font-size: 1rem; }\n",
+        r".leaflet-container { font-size: 1rem; }\n.leaflet-control-attribution {display: none; }\n",
+        render,
+    )
 
 def get_map(routes):
     lons, lats = get_coords(routes[0].coords)
@@ -62,4 +70,4 @@ def get_map(routes):
         get_layer(route, name=f"Оптимальный маршрут").add_to(fm)
     folium.LayerControl(collapsed=False).add_to(fm)
     fm.fit_bounds([(lon, lat) for lon, lat in zip(lons, lats)])
-    return fm.get_root().render()
+    return get_render(fm)
