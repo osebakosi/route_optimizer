@@ -15,7 +15,7 @@ class RouteHandler:
         return response.json()
 
     async def fetch_urls_parallel(self, urls):
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(500, connect=500)) as client:
             tasks = [self.fetch(client, url) for url in urls]
             return await asyncio.gather(*tasks)
 
