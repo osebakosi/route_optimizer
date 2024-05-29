@@ -11,7 +11,7 @@ class TSPSolver:
         self.n = self.graph.shape[0]
 
     @staticmethod
-    def brute_force_jit(graph):
+    def brute_force_method(graph):
         n = graph.shape[0]
         min_path = []
         min_cost = np.inf
@@ -28,10 +28,10 @@ class TSPSolver:
         return min_cost, min_path
 
     def brute_force(self):
-        return self.brute_force_jit(self.graph)
+        return self.brute_force_method(self.graph)
 
     @staticmethod
-    def nearest_neighbor_jit(graph):
+    def nearest_neighbor_method(graph):
         n = graph.shape[0]
         start = 0
         unvisited = set(range(1, n))
@@ -49,10 +49,10 @@ class TSPSolver:
         return total_cost, path
 
     def nearest_neighbor(self):
-        return self.nearest_neighbor_jit(self.graph)
+        return self.nearest_neighbor_method(self.graph)
 
     @staticmethod
-    def held_karp_jit(graph):
+    def held_karp_method(graph):
         n = graph.shape[0]
         C = np.full((1 << n, n), np.inf)
         parent = np.full((1 << n, n), -1, dtype=np.int32)
@@ -96,11 +96,10 @@ class TSPSolver:
         return opt, [0] + path[::-1]
 
     def held_karp(self):
-        return self.held_karp_jit(self.graph)
+        return self.held_karp_method(self.graph)
 
     @staticmethod
-    # @njit
-    def branch_and_bound_jit(graph):
+    def branch_and_bound_method(graph):
         n = graph.shape[0]
 
         def bound(path, current_length):
@@ -131,11 +130,10 @@ class TSPSolver:
         return best_length, best_path
 
     def branch_and_bound(self):
-        return self.branch_and_bound_jit(self.graph)
+        return self.branch_and_bound_method(self.graph)
 
     @staticmethod
-    # @njit
-    def simulated_annealing_jit(
+    def simulated_annealing_method(
         graph, initial_temp=1000, cooling_rate=0.995, min_temp=1
     ):
         def total_distance(path):
@@ -171,11 +169,10 @@ class TSPSolver:
         return best_cost, list(best_path) + [best_path[0]]
 
     def simulated_annealing(self):
-        return self.simulated_annealing_jit(self.graph)
+        return self.simulated_annealing_method(self.graph)
 
     @staticmethod
-    # @njit(parallel=True)
-    def ant_colony_jit(
+    def ant_colony_method(
         graph, n_ants=100, n_best=20, n_iterations=100, decay=0.95, alpha=1, beta=2
     ):
 
@@ -231,10 +228,10 @@ class TSPSolver:
         return best_cost, list(best_path) + [best_path[0]]
 
     def ant_colony(self):
-        return self.ant_colony_jit(self.graph)
+        return self.ant_colony_method(self.graph)
 
     @staticmethod
-    def genetic_algorithm_njit(
+    def genetic_algorithm_nmethod(
         graph, population_size=100, generations=500, mutation_rate=0.1, elite_size=20
     ):
         def create_route():
@@ -331,4 +328,4 @@ class TSPSolver:
         return best_cost, np.append(best_route, best_route[0])
 
     def genetic_algorithm(self):
-        return self.genetic_algorithm_njit(self.graph)
+        return self.genetic_algorithm_nmethod(self.graph)
