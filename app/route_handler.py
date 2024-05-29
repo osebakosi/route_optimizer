@@ -62,7 +62,7 @@ class RouteHandler:
                 coords.append(None)
         return addresses, coords
 
-    async def process_optimize_route(self, addresses, mode, method):
+    async def process_optimize_route(self, addresses, mode, method="ant_colony"):
         addresses, coords = await self.get_coords(addresses)
         geometry_matrix, distance_matrix = await self.get_distance_matrix(coords, mode)
 

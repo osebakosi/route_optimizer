@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "bachelor"
+name = "route_optimizer"
 version = "0.1.0"
 description = ""
 authors = ["Nikita Tyugaev <nikitatyugaev@gmail.com>"]
