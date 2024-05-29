@@ -40,7 +40,7 @@ poetry run python main.py
 ```
 The application will start running on http://127.0.0.1:8000.
 
-## Examples of Work
+## Example of Work
 
 ### Route
 ![route](examples/route.png)
