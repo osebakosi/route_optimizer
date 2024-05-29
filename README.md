@@ -39,3 +39,10 @@ Once all dependencies are installed, you can run the Route Optimizer application
 poetry run python main.py
 ```
 The application will start running on http://127.0.0.1:8000.
+
+## Examples of Work
+
+### Route
+![route](examples/route.png)
+### Optimized route
+![optimized_route](examples/optimized_route.png)
