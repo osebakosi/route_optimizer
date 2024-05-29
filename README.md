@@ -41,7 +41,7 @@ poetry run python main.py
 The application will start running on http://127.0.0.1:8000.
 
 ## Example of Work
-[text](templates/index.html)
+
 ### Route
 ![route](examples/route.png)
 ### Optimized route
